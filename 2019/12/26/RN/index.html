@@ -327,7 +327,7 @@
 
 	<a href="/2019/12/26/RN/" itemprop="url">
 		<time datetime="2019-12-26T03:25:51.000Z" itemprop="dateUpdated">
-	  		2020-01-01
+	  		2020-07-18
 	  </time>
 	</a> 
 
@@ -346,17 +346,46 @@
 	</div>
 
 	<div class="article-content" id="article-content">
-		 <a id="more"></a>
+		<h3 id="最近闲来无事，工作也不是很忙，想起来要建个博客。虽然自己没有写博客的爱好，但是希望自己有空可以写点东西。">最近闲来无事，工作也不是很忙，想起来要建个博客。虽然自己没有写博客的爱好，但是希望自己有空可以写点东西。</h3>
+<a id="more"></a>
+<h3 id="两者的区别">两者的区别</h3>
 <blockquote>
-<p>1 . 目的不同：<br>React Js的目的是为了使前端的V层更具组件化，能更好的复用，它能够使用简单的html标签创建更多的自定义组件标签，内部绑定事件，同时可以让你从操作dom中解脱出来，只需要操作数据就会改变相应的dom。<br>React Native的目的是希望我们能够使用前端的技术栈就可以创建出能够在不同平台运行的一个框架。可以创建出在移动端运行的app，但是性能可能比原声app差一点。</p>
+<p>1 . 目的不同：<br>
+React Js的目的是为了使前端的V层更具组件化，能更好的复用，它能够使用简单的html标签创建更多的自定义组件标签，内部绑定事件，同时可以让你从操作dom中解脱出来，只需要操作数据就会改变相应的dom。<br>
+React Native的目的是希望我们能够使用前端的技术栈就可以创建出能够在不同平台运行的一个框架。可以创建出在移动端运行的app，但是性能可能比原声app差一点。</p>
 </blockquote>
 <blockquote>
-<p>2 . 原理略有不同:<br>ReactJs和React Native的原理是相同的，都是由js实现的虚拟dom来驱动界面view层渲染。只不过ReactJs是驱动html dom渲染； React Native是驱动android/ios原生组件渲染。其实在React Native推出之前，就已经存在这种使用js驱动app原生组件的技术了，比如Native Script。</p>
+<p>2 . 原理略有不同:<br>
+ReactJs和React Native的原理是相同的，都是由js实现的虚拟dom来驱动界面view层渲染。只不过ReactJs是驱动html dom渲染； React Native是驱动android/ios原生组件渲染。其实在React Native推出之前，就已经存在这种使用js驱动app原生组件的技术了，比如Native Script。</p>
 </blockquote>
 <blockquote>
-<p>3 . 编程思路会有所不同:<br>react 直接渲染dom，而rn生成id，用bridge（最新用c++实现了）变成一个表，等待 native 去调用，写react可以用前端知识直接上手，rn虽然也可以，但是深入下去没有native知识支持很难.</p>
+<p>3 . 编程思路会有所不同:<br>
+react 直接渲染dom，而rn生成id，用bridge（最新用c++实现了）变成一个表，等待 native 去调用，写react可以用前端知识直接上手，rn虽然也可以，但是深入下去没有native知识支持很难.</p>
 </blockquote>
-<h6 id="最近闲来无事，工作也不是很忙，想起来要建个博客。虽然自己没有写博客的爱好，但是希望自己有空可以写点东西。"><a href="#最近闲来无事，工作也不是很忙，想起来要建个博客。虽然自己没有写博客的爱好，但是希望自己有空可以写点东西。" class="headerlink" title="最近闲来无事，工作也不是很忙，想起来要建个博客。虽然自己没有写博客的爱好，但是希望自己有空可以写点东西。"></a>最近闲来无事，工作也不是很忙，想起来要建个博客。虽然自己没有写博客的爱好，但是希望自己有空可以写点东西。</h6><p><img src="/img/pic.jpg" alt="image"></p>
+<h1>react笔记</h1>
+<ul>
+<li>每次你定义其子类的构造函数时，都需要调用 super 方法。因此，在所有含有构造函数的的 React 组件中，构造函数必须以 super(props) 开头</li>
+<li>在 JSX 语法中，你可以在大括号内放置任何有效的 JavaScript 表达式。</li>
+<li>在属性中嵌入 JavaScript 表达式时，不要在大括号外面加上引号。你应该仅使用引号（对于字符串值）或大括号（对于表达式）中的一个，对于同一属性不能同时使用这两种符号。</li>
+<li>所有 React 组件都必须像纯函数一样保护它们的 props 不被更改</li>
+<li></li>
+</ul>
+<h3 id="State-的更新可能是异步的">State 的更新可能是异步的</h3>
+<p>出于性能考虑，React 可能会把多个 setState() 调用合并成一个调用。</p>
+<p>因为 this.props 和 this.state 可能会异步更新，所以你不要依赖他们的值来更新下一个状态。</p>
+<p>例如，此代码可能会无法更新计数器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Wrong</span><br><span class="line">this.setState(&#123;</span><br><span class="line">  counter: this.state.counter + this.props.increment,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>要解决这个问题，可以让 setState() 接收一个函数而不是一个对象。这个函数用上一个 state 作为第一个参数，将此次更新被应用时的 props 做为第二个参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Correct</span><br><span class="line">this.setState((state, props) &#x3D;&gt; (&#123;</span><br><span class="line">  counter: state.counter + props.increment</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+<p>上面使用了箭头函数，不过使用普通的函数也同样可以：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Correct</span><br><span class="line">this.setState(function(state, props) &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    counter: state.counter + props.increment</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>在 JavaScript 中，true &amp;&amp; expression 总是会返回 expression, 而 false &amp;&amp; expression 总是会返回 false。</li>
+<li>在极少数情况下，你可能希望能隐藏组件，即使它已经被其他组件渲染。若要完成此操作，你可以让 render 方法直接返回 null，而不进行任何渲染。在组件的 render 方法中返回 null 并不会影响组件的生命周期。</li>
+<li>React 并不会使用 selected 属性，而是在根 select 标签上使用 value 属性。这在受控组件中更便捷，因为您只需要在根标签中更新它。</li>
+</ul>
+<p><img src="/img/pic.jpg" alt="image"></p>
 	
 	</div>
 	
@@ -374,6 +403,10 @@
 				
 	<span>
 		<a href="javascript: window.scrollTo(0, 0);">返回顶部</a>
+		
+			<a href="/2020/07/18/sad/" title="sad" rel="prev">
+				&laquo;上一篇
+			</a>
 		
 		
 			<a href="/2019/12/26/hello-world/" title="Hello World" rel="next">
@@ -394,6 +427,30 @@
 <div class="relate-post">
 	
 		<ul>
+			
+					<li>
+						<div class="relate-post-text">
+							<a class="relate-post-title" href="/2020/07/18/sad/" title="sad">
+								sad			
+							</a>
+							<p class="relate-post-date">
+								<i class="fa fa-calendar"></i>
+								七月 18日, 2020				
+							</p>
+							<p class="relate-post-content">
+								工作的压力，生活的孤独……
+
+							</p>
+						</div>
+
+						<div class="relate-post-cover">
+							<a href="/2020/07/18/sad/" title="sad">				
+								
+								<img class="lazy" src="/img/placeholder.jpg" data-src="/img/IMG_0412.JPG" alt="sad"/>
+							</a>
+						</div>
+					</li>											
+			
 			
 					<li>
 						<div class="relate-post-text">
